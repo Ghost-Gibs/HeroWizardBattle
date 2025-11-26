@@ -107,8 +107,10 @@ class Mage(Character):
 
     def mana_restore(self):
         restore_amount = 40
+        old_mana = self.mana
         self.mana = min(self.mana + restore_amount, 100)
-        print(f"{self.name} restores {restore_amount} mana! Current mana: {self.mana}/100")
+        actual_restore = self.mana - old_mana
+        print(f"{self.name} restores {actual_restore} mana! Current mana: {self.mana}/100")
 
     def use_special_ability(self, opponent, ability_choice):
         if ability_choice == '1':
@@ -197,8 +199,10 @@ class EvilWizard(Character):
         super().__init__(name, health=150, attack_power=15)
 
     def regenerate(self):
-        self.health += 5
-        print(f"{self.name} regenerates 5 health! Current health: {self.health}")
+        old_health = self.health
+        self.health = min(self.health + 5, self.max_health)
+        actual_regen = self.health - old_health
+        print(f"{self.name} regenerates {actual_regen} health! Current health: {self.health}/{self.max_health}")
 
 
 def create_character():
