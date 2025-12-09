@@ -1,6 +1,7 @@
 modules = ["python-3.11"]
 [agent]
 expertMode = true
+integrations = ["github:1.0.0"]
 
 [workflows]
 runButton = "Project"
@@ -24,3 +25,6 @@ args = "python battle_game.py"
 
 [workflows.workflow.metadata]
 outputType = "console"
+
+[nix]
+channel = "stable-25_05"
